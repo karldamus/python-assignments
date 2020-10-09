@@ -36,8 +36,17 @@ def printLootbox():
 def errorWrongInput():
     print("\nError: That was not a valid selection. Please enter a number between 1-" + str(boxCount))
 
+def receipt():
+    total = float((int(quantity) * float(boxPrices[updatedValue])))
+    print("---------------------------------")
+    print(str(quantity) + "x " + boxNames[updatedValue] + " ($" + str(boxPrices[updatedValue]) + ")")
+    print("---------------------------------")
+    print ("\nTotal Cost: $" + str(total))
+    print("Thank you! Good luck, gamer!\n")
+
+
 # game start
-# gamerName = input("\nHELLO, GAMER! Welcome to the Raven Runner Loot Box Purchasing System. First, what's your player name?\n")
+gamerName = input("\nHELLO, GAMER! Welcome to the Raven Runner Loot Box Purchasing System. First, what's your player name?\n")
 
 selectionMade = False
 while selectionMade == False:
@@ -55,5 +64,17 @@ while selectionMade == False:
 
 # subtract one from selection in order to get corresponding list value [0-2]
 updatedValue = int(selection) +- 1
-quantity = input("\nHow many of " + boxNames[updatedValue] + "s (" + str(boxPrices[updatedValue]) + ") would you like to purchase? ")
+finalized = False
+while finalized == False:
+    quantity = input("\nHow many of " + boxNames[updatedValue] + "s (" + str(boxPrices[updatedValue]) + ") would you like to purchase? ")
+    isDigit = quantity.isdigit()
+    if isDigit == False:
+        print("\nThat is not a quantity. Please type a number of items you wish to purchase.")
+    else:
+        if int(quantity) > 0:
+            finalized = True
+        else:
+            print("\nThat is not a valid quantity. Please type a number above 0.")
 
+print("\nThanks, " + gamerName + "! Here is your receipt:")
+receipt()
