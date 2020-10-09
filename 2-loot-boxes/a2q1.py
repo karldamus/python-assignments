@@ -30,12 +30,30 @@ def printLootbox():
     print("\nPlease select a loot box from the menu below:\n")
     i = 0
     while i < boxCount:
-        # print(str(i + 1) + ". " + "[" + boxRarity[i] + "]" + "   " + boxNames[i] + "(" + str(boxPrices[i]) + ")")
         print(str(i + 1) + ". " + "[" + boxRarity[i] + "]" + " (" + str(boxPrices[i]) + ") " + boxNames[i])
         i += 1
 
-# game start
-input("\nHELLO, GAMER! Welcome to the Raven Runner Loot Box Purchasing System. First, what's your player name?\n")
+def errorWrongInput():
+    print("\nError: That was not a valid selection. Please enter a number between 1-" + str(boxCount))
 
-printLootbox()
-input("\n")
+# game start
+# gamerName = input("\nHELLO, GAMER! Welcome to the Raven Runner Loot Box Purchasing System. First, what's your player name?\n")
+
+selectionMade = False
+while selectionMade == False:
+    printLootbox()
+    selection = input("\n")
+    isDigit = selection.isdigit()
+    if isDigit == False: 
+        errorWrongInput()
+    else:
+        if int(selection) >= 1 and int(selection) <= boxCount:
+            selectionMade = True
+            # break
+        else:
+            errorWrongInput()
+
+# subtract one from selection in order to get corresponding list value [0-2]
+updatedValue = int(selection) +- 1
+quantity = input("\nHow many of " + boxNames[updatedValue] + "s (" + str(boxPrices[updatedValue]) + ") would you like to purchase? ")
+
