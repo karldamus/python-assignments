@@ -89,3 +89,6 @@ while userFinished == False:
 
 print("\nThanks, " + gamerName + "! Here is your receipt:\n")
 receipt()
+
+print("\nTime to Open Boxes!")
+print("---------------------------------")
