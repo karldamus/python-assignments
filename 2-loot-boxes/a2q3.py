@@ -62,6 +62,9 @@ def addToCart():
     cart.append(str('{:4.2f}'.format(boxPrices[updatedValue])))
     cart.append(int(quantity))
 
+# def openBox():
+
+
 # print ('{:4.2f}'.format'{:4.2f}'.format(boxPrices[0]))
 
 # game start
@@ -108,3 +111,33 @@ receipt()
 
 print("\nTime to Open Boxes!")
 print("---------------------------------")
+
+if common > 0:
+    i = 0
+    commons = []
+    while i < common :
+        rarity_com = 0.80
+        rarity_rar = 0.95
+        rarity_epi = 1
+        boxType = random.random()
+        # print(boxType)
+
+        if boxType <= rarity_com:
+            commons.append("common")
+        elif boxType > rarity_com and boxType <= rarity_rar:
+            commons.append("rare")
+        elif boxType > rarity_rar and boxType <= rarity_epi:
+            commons.append("EPIC")
+        
+        i += 1
+
+for b in commons:
+    print("Opening common box 1:")
+    if b != "EPIC":
+        print("\tIt's a " + b + " item!")
+    else:
+        print("\tIt's an " + b + " item!")
+
+
+
+# print(commons)
