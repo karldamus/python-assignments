@@ -21,6 +21,9 @@ boxPrices = [1.50, 3.00, 7.99]
 boxCount = len(boxNames)
 
 cart = []
+common = 0
+rare = 0
+epic = 0
 
 # functions
 def printLootbox():
@@ -35,15 +38,23 @@ def errorWrongInput():
     print("\nError: That was not a valid selection. Please enter a number between 1-" + str(boxCount))
 
 def receipt():
-    c = 0
-    total = []
+    total = 0
     print("---------------------------------")
-    while c < (len(cart)):
-        print(str(cart[c + 2]) + "x " + cart[c] + " ($" + str(cart[c + 1]) + ")")
-        total.append(float(cart[c + 1]))
-        c += 3
+    # while c < (len(cart)):
+    #     print(str(cart[c + 2]) + "x " + cart[c] + " ($" + str(cart[c + 1]) + ")")
+    #     total.append(float(cart[c + 1]))
+    #     c += 3
+    if common > 0:
+        print(str(common) + "x " + boxNames[0] + " ($" + str(boxPrices[0]) + ")")
+        total += (int(common) * float(boxPrices[0]))
+    if rare > 0:
+        print(str(rare) + "x " + boxNames[1] + " ($" + str(boxPrices[1]) + ")")
+        total += (int(rare) * float(boxPrices[1]))
+    if epic > 0:
+        print(str(epic) + "x " + boxNames[2] + " ($" + str(boxPrices[2]) + ")")
+        total += (int(epic) * float(boxPrices[2]))
     print("---------------------------------")
-    print ("\nTotal Cost: $" + str(sum(total)))
+    print ("\nTotal Cost: $" + str('{:4.2f}'.format(total)))
     print("Thank you! Good luck, gamer!\n")
 
 def addToCart():
@@ -76,7 +87,12 @@ while userFinished == False:
                     print("\nThat is not a quantity. Please type a number of items you wish to purchase.")
                 else:
                     if int(quantity) > 0:
-                        addToCart()
+                        if updatedValue == 0:
+                            common += int(quantity)
+                        elif updatedValue == 1:
+                            rare += int(quantity)
+                        elif updatedValue == 2:
+                            epic += int(quantity)
                         finalized = True
                     else:
                         print("\nThat is not a valid quantity. Please type a number above 0.")
