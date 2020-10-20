@@ -1,6 +1,6 @@
 # Raven Runner | ©2020 Karl Damus, All Rights Reserved
-# Created on October 8, 2020
-# a2q1.py
+# Created on October 12, 2020
+# a2q2.py
 
 
 # In this problem, you will modify your previous solution so that we can purchase multiple loot boxes at once.
