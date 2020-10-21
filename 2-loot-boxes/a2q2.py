@@ -2,14 +2,6 @@
 # Created on October 12, 2020
 # a2q2.py
 
-
-# In this problem, you will modify your previous solution so that we can purchase multiple loot boxes at once.
-# 1. Our menu will now need a “Complete Purchase” option to stop purchasing (you can rename this, as long as it is clear)
-# 2. Our menu will continue prompting for additional purchases until the selects the Complete Purchase option
-# 3. We will need to track how many of ​each type of loot box​ we are purchasing - one variable per type
-# 4. If the user selects the same box a second or third time, it should be ​added to the previous amount
-# 5. The receipt should contain a list of each box they have purchased; if they did not purchase a type of box, it should not appear on the receipt
-
 import math
 import random
 
@@ -36,6 +28,10 @@ def printLootbox():
     print(str(i) + ". Complete Purchase")
 def errorWrongInput():
     print("\nError: That was not a valid selection. Please enter a number between 1-" + str(boxCount))
+def addToCart():
+    cart.append(boxNames[updatedValue])
+    cart.append(str('{:4.2f}'.format(boxPrices[updatedValue])))
+    cart.append(int(quantity))
 
 def receipt():
     total = 0
@@ -56,11 +52,6 @@ def receipt():
     print("---------------------------------")
     print ("\nTotal Cost: $" + str('{:4.2f}'.format(total)))
     print("Thank you! Good luck, gamer!\n")
-
-def addToCart():
-    cart.append(boxNames[updatedValue])
-    cart.append(str('{:4.2f}'.format(boxPrices[updatedValue])))
-    cart.append(int(quantity))
 
 # print ('{:4.2f}'.format'{:4.2f}'.format(boxPrices[0]))
 
@@ -103,5 +94,5 @@ while userFinished == False:
         else:
             errorWrongInput()
 
-print("\nThanks, " + gamerName + "! Here is your receipt:\n")
+print("\nThanks, " + str(gamerName) + "! Here is your receipt:\n")
 receipt()

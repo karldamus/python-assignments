@@ -26,11 +26,43 @@ def printLootbox():
     i += 1
     print(str(i) + ". Complete Purchase")
 
-# def requestLootbox():
+def openBox(rarity, quantity):
+    if rarity == 0:
+        chanceCommonItem = 0.80
+        chanceRareItem = 0.95
+        chanceEpicItem = 1
+        displayText = "common"
+
+    if rarity == 1:
+        chanceCommonItem = 0.50
+        chanceRareItem = 0.90
+        chanceEpicItem = 1
+        displayText = "rare"
+
+    if rarity == 2:
+        chanceCommonItem = 0.30
+        chanceRareItem = 0.80
+        chanceEpicItem = 1
+        displayText = "epic"
+
+    boxCount = 0
+    while boxCount < quantity:
+        print("Opening " + displayText + " box " + str((boxCount) + 1))
+        itemCount = 0
+        while itemCount < 3:
+            item = random.random()
+            if item <= chanceCommonItem:
+                print("\tIt's a common item!")
+            elif (item > chanceRareItem) and (item < chanceEpicItem):
+                print("\tIt's a rare item!")
+            else:
+                print("\tIt's an EPIC ITEM!")
+            itemCount += 1
+        boxCount += 1
 
 
 # game start
-# gamerName = input("\nHELLO, GAMER! Welcome to the Raven Runner Loot Box Purchasing System. First, what's your player name?\n")
+gamerName = input("\nHELLO, GAMER! Welcome to the Raven Runner Loot Box Purchasing System. First, what's your player name?\n")
 
 # user has not finished their order yet so set orderComplete to False
 orderComplete = False
@@ -87,41 +119,35 @@ totalCost = ((commons * boxPrices[0]) + (rares * boxPrices[1]) + (epics * boxPri
 # print("Rare: " + str(rares))
 # print("Epic: " + str(epics))
 
+# give a receipt if the user actually bought anything
+if (commons != 0) or (rares != 0) or (epics != 0):
+
+    # user has finished their order let's print the lootboxes
+    print("\nThanks, " + str(gamerName) + " Here is your receipt:")
+    print("---------------------------------")
+    if commons > 0:
+        print(str(commons) + "x" + "\t" + boxNames[0] + " (" + str(boxPrices[0]) + ")")
+    if rares > 0:
+        print(str(rares) + "x" + "\t" + boxNames[1] + " (" + str(boxPrices[1]) + ")")
+    if epics > 0:
+        print(str(epics) + "x" + "\t" + boxNames[2] + " (" + str(boxPrices[2]) + ")")
+    print("---------------------------------")
+    print ("\nTotal Cost: $" + str('{:4.2f}'.format(totalCost)))
+    print("Thank you! Good luck, gamer!\n")
 
 
-# user has finished their order let's print the lootboxes
-print("\nThanks, Test! Here is your receipt:")
-print("---------------------------------")
-if commons > 0:
-    print(str(commons) + "x" + "\t" + boxNames[0] + " (" + str(boxPrices[0]) + ")")
-if rares > 0:
-    print(str(rares) + "x" + "\t" + boxNames[1] + " (" + str(boxPrices[1]) + ")")
-if epics > 0:
-    print(str(epics) + "x" + "\t" + boxNames[2] + " (" + str(boxPrices[2]) + ")")
-print("---------------------------------")
-print ("\nTotal Cost: $" + str('{:4.2f}'.format(totalCost)))
-print("Thank you! Good luck, gamer!\n")
+    print("\nTime to Open Boxes!")
+    print("---------------------------------")
+    # use the openBox() function to get items for each box that was bought
+    if commons > 0:
+        openBox(0, commons)
+    if rares > 0:
+        openBox(1, rares)
+    if epics > 0:
+        openBox(2, epics)
 
+    print("\nThanks for shopping with us " + str(gamerName) + "! Come back anytime.\n\n")    
 
-# loop through each item in cart
-# for i in finalCart:
-
-
-
-
-
-
-
-# print(cart)
-
-
-
-# if common > 0:
-#     print(str(common) + "x " + boxNames[0] + " ($" + str(boxPrices[0]) + ")")
-#     total += (int(common) * float(boxPrices[0]))
-# if rare > 0:
-#     print(str(rare) + "x " + boxNames[1] + " ($" + str(boxPrices[1]) + ")")
-#     total += (int(rare) * float(boxPrices[1]))
-# if epic > 0:
-#     print(str(epic) + "x " + boxNames[2] + " ($" + str(boxPrices[2]) + ")")
-#     total += (int(epic) * float(boxPrices[2]))
+# user did not buy anything 
+else:
+    print("\nThanks for looking! Come back if you change your mind.\n\n")
