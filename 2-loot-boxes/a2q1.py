@@ -2,18 +2,6 @@
 # Created on October 8, 2020
 # a2q1.py
 
-# You will build the menu that allows the user to buy one or many of a single type of loot box.
-
-# 1. The program starts by asking for the player’s username
-# 2. The program shows a menu to the user to purchase one of three loot boxes.
-    # Display: The menu must display the number for the option, the rarity, the cost, and the name of the box.
-# 3. The user enters a number that corresponds with the loot box they would like to purchase
-    # Invalid Inputs: The user is allowed to type incorrect inputs. If they do not type a valid number, 
-    # it should print an error message and show the menu again. You can use a while loop to help with this.
-# 4. The user is then asked how many of those loot boxes they would like to purchase
-# 5. The user is given a personal message, thanking them for their business (using their name), and a receipt is shown for their order.
-    # Receipt Info: The receipt should show the loot box name, the number of boxes they purchased, and the total cost of the purchase.
-
 import math
 import random
 
