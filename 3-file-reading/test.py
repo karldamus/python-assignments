@@ -32,39 +32,40 @@ def read_emf(location_name):
 
     with open(filename, "r") as f:
         counter = 0
+        roomSum = 0
         for line in f:
-            
+
             line = line.strip()
-            # current line is a number add to current 'sum tally'
+            # current line is a number, so add to existing 'sum tally' if it exists
             if line.isnumeric():
-                try:
-                    roomSum = roomSum + int(line)
-                    print("Tried 'roomSum' variable")
-                    counter += 1
-                except NameError:
-                    roomSum = int(line)
-                    print("set 'roomSum variable")
-                    counter += 1
+                roomSum = roomSum + int(line)
+                counter += 1
             # current line is not a number, reset the loop parameters
             else:
-                print("This line is not a number.")
-                currentRoom = line
                 try:
                     roomSum
-                    if(roomSum >= 0):
+                    # check if room sum is > zero; calculate ave and append current room to highEMF if ave > 3
+                    if(roomSum > 0):
                         roomAverage = (roomSum / counter)
-                        print("Tried to average")
+                        if roomAverage > 3:
+                            highEMF.append(str(currentRoom))
                 except NameError:
                     roomSum = 0
-                
-                # reset counter for next room
+
+                # reset counter, roomSum, roomAverage, and currentRoom variables for the next room
+                currentRoom = line
+                roomSum = 0
                 counter = 0
+                roomAverage = 0
+        
+        # end of file does not have another string of 'text' at the end so this accounts for the last room in the house
+        else:
+            if(roomSum > 0):
+                roomAverage = (roomSum / counter)
+                if roomAverage > 3:
+                    highEMF.append(str(currentRoom))
 
-
-    print("Sum: " + str(roomSum))
-    print("Ave: " + str(roomAverage))
-            
-            
+    print(highEMF)
 
 if __name__ == "__main__": 
     main()
