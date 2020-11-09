@@ -1,50 +1,37 @@
-# with open("test.txt", "w") as infile:
-#     infile.write("Test!\n")
+rooms = ['bathroom', 'gameroom', 'kitchen', 'breakroom', 'closet']
 
 def main():
-    read_motion("ravensnest")
+    # read_motion("ravensnest")
+    read_emf("ravensnest")
+
 
 def read_motion(location_name):
-    bathroom = 0
-    gameroom = 0
-    kitchen = 0
-    breakroom = 0
-    closet = 0
+    # set up list for rooms with "motion detected", set filename and open file
     roomslist = []
     filename = "data/" + location_name + ".motion.txt"
     with open(filename, "r") as f:
-        
+        # loop through each line in motion file 
+        # (strip away unecesarry spaces and create a list for current line)
         for line in f:
             line = line.strip()
             currentLine = line.split(",")
-
-            if(currentLine[0] == "bathroom"):
-                if "detected" in currentLine:
-                    if bathroom == 0:
-                        bathroom = 1
-                        roomslist.append("bathroom")
-            if(currentLine[0] == "gameroom"):
-                if "detected" in currentLine:
-                    if gameroom == 0:
-                        gameroom = 1
-                        roomslist.append("gameroom")
-            if(currentLine[0] == "kitchen"):
-                if "detected" in currentLine:
-                    if kitchen == 0:
-                        kitchen = 1
-                        roomslist.append("kitchen")
-            if(currentLine[0] == "breakroom"):
-                if "detected" in currentLine:
-                    if breakroom == 0:
-                        breakroom = 1
-                        roomslist.append("breakroom")
-            if(currentLine[0] == "closet"):
-                if "detected" in currentLine:
-                    if closet == 0:
-                        closet = 1
-                        roomslist.append("closet")
-
+            # go through list of rooms
+            for room in rooms:
+                if(currentLine[0] == str(room)):
+                    if "detected" in currentLine:
+                        # print(room)
+                        if room in roomslist:
+                            continue
+                        else:
+                            roomslist.append(room)
     print(roomslist)
+
+def read_emf(location_name):
+    filename = "data/" + location_name + ".emf.txt"
+    with open(filename, "r") as f:
+        for line in f:
+            line = line.strip()
+            
 
 if __name__ == "__main__": 
     main()
