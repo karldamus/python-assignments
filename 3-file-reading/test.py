@@ -3,6 +3,7 @@ rooms = ['bathroom', 'gameroom', 'kitchen', 'breakroom', 'closet']
 def main():
     # read_motion("ravensnest")
     read_emf("ravensnest")
+    # read_temp("ravensnest")
 
 
 def read_motion(location_name):
@@ -66,6 +67,9 @@ def read_emf(location_name):
                     highEMF.append(str(currentRoom))
 
     print(highEMF)
+
+# def read_temp(location_name):
+
 
 if __name__ == "__main__": 
     main()
