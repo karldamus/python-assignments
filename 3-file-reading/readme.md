@@ -1,6 +1,5 @@
-# Assignment 3 Readme
-- - - -
 # Lists, Files, Functions, and Ghosts
+- - - -
 ### Job Posting: Raven Ghost Hunting Society
 **Job Title:** Paranormal Instrument Software Designer
 **Duties:** Developing the software for ghost hunting equipment
