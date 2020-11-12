@@ -1,5 +1,3 @@
-# Assignment 4 Readme
-- - - -
 # Among Us in Python
 - - - -
 ### Introduction
