@@ -1,0 +1,34 @@
+red: I ran out of cafeteria.
+red: Then I went to storage to do a task.
+red: On my way, I saw blue in admin.
+red: Then I moved on to shields and did my task there. 
+red: I saw green in communications, acting pretty sus.
+red: Went into communications after and found the body.
+orange voted green
+brown voted green
+yellow voted green
+orange: green, can you defend yourself?
+green: Oh. Kay. So I was up in weapons.
+green: Then I fixed o2
+green: I went down to shields to do a task
+green: I went to communications after that
+green: There wasn't a body, I saw red go past when I was leaving.
+green: Then I went to storage.
+green: orange was in storage doing some weird dance or something
+green: but no, nobody was with me
+orange: blue was with me the whole time
+orange: we went to admin
+orange: then we went to storage
+orange: I thought red was going to kill us in storage so I danced around
+blue: I was in admin and saw a few people.
+blue: I can confirm red was in storage.
+green voted orange
+blue: I can also confirm that green was in communications.
+blue: But orange was not with me the whole round, pretty sus
+blue voted orange
+blue: Then I went straight to o2 to try and fix that.
+green: wait, blue, you were in o2?
+blue: yeah
+green: huh...
+red voted skip
+pink voted skip

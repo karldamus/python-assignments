@@ -1,0 +1,14 @@
+upper engine: cafeteria, reactor, security, lower engine, medbay
+reactor: security, upper engine, lower engine
+security: upper engine, lower engine, reactor
+lower engine: electrical, storage, upper engine, reactor, security
+medbay: upper engine, cafeteria
+cafeteria: storage, admin, weapons, upper engine, medbay
+weapons: o2, navigation, cafeteria, shields
+o2: weapons, navigation, shields
+navigation: weapons, o2, shields
+shields: communications, storage, weapons, o2, navigation
+communications: storage, shields
+storage: admin, cafeteria, lower engine, electrical, shields, communications
+electrical: storage, lower engine
+admin: cafeteria, storage

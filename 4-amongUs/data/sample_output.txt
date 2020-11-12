@@ -1,0 +1,95 @@
+# Introduction
+
+The content here is for your reference only. If you believe there is an error in this,
+please let me know immediately on the forums so that I can adjust it and send out
+an announcement with the corrections.
+
+# Problem 1
+
+The skeld.txt dictionary should be:
+
+    {'admin': ['cafeteria', 'storage'],
+    'cafeteria': ['storage', 'admin', 'weapons', 'upper engine', 'medbay'],
+    'communications': ['storage', 'shields'],
+    'electrical': ['storage', 'lower engine'],
+    'lower engine': ['electrical',
+                    'storage',
+                    'upper engine',
+                    'reactor',
+                    'security'],
+    'medbay': ['upper engine', 'cafeteria'],
+    'navigation': ['weapons', 'o2', 'shields'],
+    'o2': ['weapons', 'navigation', 'shields'],
+    'reactor': ['security', 'upper engine', 'lower engine'],
+    'security': ['upper engine', 'lower engine', 'reactor'],
+    'shields': ['communications', 'storage', 'weapons', 'o2', 'navigation'],
+    'storage': ['admin',
+                'cafeteria',
+                'lower engine',
+                'electrical',
+                'shields',
+                'communications'],
+    'upper engine': ['cafeteria', 'reactor', 'security', 'lower engine', 'medbay'],
+    'weapons': ['o2', 'navigation', 'cafeteria', 'shields']}
+
+# Problem 3:
+
+With the provided chatlog, we should receive the list:
+
+    ['red: red in cafeteria',
+    'red: red in storage',
+    'red: blue in admin',
+    'red: red in shields',
+    'red: green in communications',
+    'red: red in communications',
+    'orange voted green',
+    'brown voted green',
+    'yellow voted green',
+    'green: green in weapons',
+    'green: green in o2',
+    'green: green in shields',
+    'green: green in communications',
+    'green: green in storage',
+    'green: orange in storage',
+    'orange: orange in admin',
+    'orange: orange in storage',
+    'orange: red in storage',
+    'blue: blue in admin',
+    'blue: red in storage',
+    'green voted orange',
+    'blue: green in communications',
+    'blue voted orange',
+    'blue: blue in o2',
+    'green: blue in o2',
+    'red voted skip',
+    'pink voted skip']
+
+ # Problem 4
+
+ With the above list, we should see the vote tally dictionary as:
+    {'blue': 0,
+    'brown': 0,
+    'green': 3,
+    'orange': 2,
+    'pink': 0,
+    'red': 0,
+    'skip': 2,
+    'yellow': 0}
+
+# Problem 5
+
+The paths described in the data above should provide the dictionary:
+
+    {'blue': ['admin', 'o2'],
+    'brown': [],
+    'green': ['weapons', 'o2', 'shields', 'communications', 'storage'],
+    'orange': ['admin', 'storage'],
+    'pink': [],
+    'red': ['cafeteria', 'storage', 'shields', 'communications'],
+    'yellow': []}
+
+# Problem 6
+
+Finally, the list of liars should look like:
+
+    ['blue']
