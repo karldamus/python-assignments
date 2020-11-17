@@ -10,6 +10,7 @@ def main():
     load_map("data/skeld.txt")
     load_chat_log("data/chatlog.txt", load_map("data/skeld.txt"))
     tally_votes(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt")))
+    get_paths(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt")))
 
 def load_map(file_path):
     with open(file_path, "r") as f:
@@ -77,19 +78,56 @@ def load_chat_log(filename, rooms):
     return(simplifiedChatLog)
 
 def tally_votes(chat_log):
-    tallyList = PLAYERS
-    tallyList.append("skip")
     tally = {}
-    for player in tallyList:
+    # create a key for each player
+    for player in PLAYERS:
         tally[player] = 0
+    # add a key for 'skip'
+    tally["skip"] = 0
     for val in chat_log:
         isVote = val.find("voted")
         if isVote >= 0:
             val = val.split(" ")
             tally[val[2]] = (int(tally[val[2]]) + 1)
-    print(tally)
+    return tally
+
+
+def get_paths(chat_log):
+    pathDict = {}
+    # create keys in dictionary for each player
+    for player in PLAYERS:
+        pathDict[player] = [] 
+    # print(chat_log)
+    # run through chat_log -- skip if a vote or if accusatory
+    for chatVal in chat_log:
+        if chatVal.find("voted") >= 0:
+            pass
+        else:
+            chatVal = chatVal.split(":")
+            # check if accusatory
+            if chatVal[1].find(chatVal[0]) >= 0:
+                print(chatVal)
+            
+        
+
+
+    # for val in chat_log:
+    #     isVote = val.find("voted")
+    #     val = val.split(":")
+    #     for testAccusatory in PLAYERS:
+    #         isAccusatory = val[1].find(testAccusatory)
+    #         if isAccusatory >= 0:
+    #             break
+    #     if isVote >= 0 or isAccusatory >= 0:
+    #         pass
+    #     else:
+    #         print("Correct")
 
 if __name__ == '__main__':
     main()
 
-    
+"""
+chat = chat.split(":")
+    speaker = chat[0]
+    message = chat[1]
+"""
