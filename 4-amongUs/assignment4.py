@@ -10,6 +10,7 @@ def main():
     load_chat_log("data/chatlog.txt", load_map("data/skeld.txt"))
     tally_votes(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt")))
     get_paths(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt")))
+    get_sus_paths(get_paths(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt"))), load_map("data/skeld.txt"))
 
 def load_map(file_path):
     with open(file_path, "r") as f:
@@ -21,7 +22,6 @@ def load_map(file_path):
             map_dictionary[line[0]] = line[1]
     # print("{" + "\n".join("{!r}: {!r},".format(k, v) for k, v in map_dictionary.items()) + "}")
     return map_dictionary
-
 
 def simplify_testimony(chat, rooms):
     # if the 'chat' is a vote simply use the line. if not, follow else statement
@@ -111,7 +111,18 @@ def get_paths(chat_log):
         pathDict[val[0]].append(val[1][3])
     return pathDict
 
-
+def get_sus_paths(path_dict, rooms):
+    sus_players = []
+    for player in PLAYERS:
+        for location in range(len(path_dict[player])):
+            try:
+                path_dict[player][location + 1]
+                if (path_dict[player][location + 1]) in rooms[path_dict[player][location]]:
+                    pass
+                else:
+                    print(player + " is lying")
+            except IndexError:
+                pass
 
 if __name__ == '__main__':
     main()
