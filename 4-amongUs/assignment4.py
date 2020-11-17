@@ -20,7 +20,6 @@ def load_map(file_path):
             line[1] = line[1].strip(" ").split(", ")
             # add to dictionary
             map_dictionary[line[0]] = line[1]
-    # print("{" + "\n".join("{!r}: {!r},".format(k, v) for k, v in map_dictionary.items()) + "}")
     return map_dictionary
 
 def simplify_testimony(chat, rooms):
@@ -96,7 +95,6 @@ def get_paths(chat_log):
     # create keys in dictionary for each player
     for player in PLAYERS:
         pathDict[player] = [] 
-    # print(chat_log)
     # run through chat_log -- skip if a vote or if accusatory
     for chatVal in chat_log:
         if chatVal.find("voted") >= 0:
@@ -120,15 +118,10 @@ def get_sus_paths(path_dict, rooms):
                 if (path_dict[player][location + 1]) in rooms[path_dict[player][location]]:
                     pass
                 else:
-                    print(player + " is lying")
+                    sus_players.append(player)
             except IndexError:
                 pass
+    return sus_players
 
 if __name__ == '__main__':
     main()
-
-"""
-chat = chat.split(":")
-    speaker = chat[0]
-    message = chat[1]
-"""
