@@ -3,8 +3,7 @@
 # ©2020 Karl Damus, All Rights Reserved
 #
 
-PLAYERS = ['blue', 'brown', 'green', 'orange', 'pink', 'red', 'yellow']
-# testDict = {'upper engine': ['cafeteria', 'reactor', 'security', 'lower engine', 'medbay'], 'reactor': ['security', 'upper engine', 'lower engine'], 'security': ['upper engine', 'lower engine', 'reactor'], 'lower engine': ['electrical', 'storage', 'upper engine', 'reactor', 'security'], 'medbay': ['upper engine', 'cafeteria'], 'cafeteria': ['storage', 'admin', 'weapons', 'upper engine', 'medbay'], 'weapons': ['o2', 'navigation', 'cafeteria', 'shields'], 'o2': ['weapons', 'navigation', 'shields'], 'navigation': ['weapons', 'o2', 'shields'], 'shields': ['communications', 'storage', 'weapons', 'o2', 'navigation'], 'communications': ['storage', 'shields'], 'storage': ['admin', 'cafeteria', 'lower engine', 'electrical', 'shields', 'communications'], 'electrical': ['storage', 'lower engine'], 'admin': ['cafeteria', 'storage'],}
+PLAYERS = ["red", "blue", "green", "yellow", "brown", "pink", "orange"]
 
 def main():
     load_map("data/skeld.txt")
@@ -91,9 +90,9 @@ def tally_votes(chat_log):
             tally[val[2]] = (int(tally[val[2]]) + 1)
     return tally
 
-
 def get_paths(chat_log):
     pathDict = {}
+    nonAccusatoryStatements = []
     # create keys in dictionary for each player
     for player in PLAYERS:
         pathDict[player] = [] 
@@ -106,22 +105,13 @@ def get_paths(chat_log):
             chatVal = chatVal.split(":")
             # check if accusatory
             if chatVal[1].find(chatVal[0]) >= 0:
-                print(chatVal)
-            
-        
+                nonAccusatoryStatements.append(chatVal)
+    for val in nonAccusatoryStatements:
+        val[1] = val[1].split(" ")
+        pathDict[val[0]].append(val[1][3])
+    return pathDict
 
 
-    # for val in chat_log:
-    #     isVote = val.find("voted")
-    #     val = val.split(":")
-    #     for testAccusatory in PLAYERS:
-    #         isAccusatory = val[1].find(testAccusatory)
-    #         if isAccusatory >= 0:
-    #             break
-    #     if isVote >= 0 or isAccusatory >= 0:
-    #         pass
-    #     else:
-    #         print("Correct")
 
 if __name__ == '__main__':
     main()
