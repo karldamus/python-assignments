@@ -2,15 +2,18 @@
 # 
 # ©2020 Karl Damus, All Rights Reserved
 #
+# Note: This program does not currently output anything. It is all "return" statements.
+# Sample data can be found in '4-amongus/data'.
+# The final function returns a list with the liar inside: ['blue'].
 
 PLAYERS = ["red", "blue", "green", "yellow", "brown", "pink", "orange"]
 
 def main():
-    load_map("data/skeld.txt")
-    load_chat_log("data/chatlog.txt", load_map("data/skeld.txt"))
-    tally_votes(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt")))
-    get_paths(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt")))
-    get_sus_paths(get_paths(load_chat_log("data/chatlog.txt", load_map("data/skeld.txt"))), load_map("data/skeld.txt"))
+    loadMap = load_map("data/skeld.txt")
+    loadChat = load_chat_log("data/chatlog.txt", loadMap)
+    tally_votes(loadChat)
+    getPaths = get_paths(loadChat)
+    get_sus_paths(getPaths, loadMap)
 
 def load_map(file_path):
     with open(file_path, "r") as f:
