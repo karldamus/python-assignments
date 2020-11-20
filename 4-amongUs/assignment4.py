@@ -11,9 +11,9 @@ PLAYERS = ["red", "blue", "green", "yellow", "brown", "pink", "orange"]
 def main():
     loadMap = load_map("data/skeld.txt")
     loadChat = load_chat_log("data/chatlog.txt", loadMap)
-    tally_votes(loadChat)
+    tallyVotes = tally_votes(loadChat)
     getPaths = get_paths(loadChat)
-    get_sus_paths(getPaths, loadMap)
+    susPaths = get_sus_paths(getPaths, loadMap)
 
 def load_map(file_path):
     with open(file_path, "r") as f:
