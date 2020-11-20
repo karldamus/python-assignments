@@ -13,7 +13,7 @@ def main():
     loadChat = load_chat_log("data/chatlog.txt", loadMap)
     tallyVotes = tally_votes(loadChat)
     getPaths = get_paths(loadChat)
-    susPaths = get_sus_paths(getPaths, loadMap)
+    liars = get_sus_paths(getPaths, loadMap)
 
 def load_map(file_path):
     with open(file_path, "r") as f:
