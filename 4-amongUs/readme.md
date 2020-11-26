@@ -15,4 +15,4 @@ This assignment slowly evolves the functionality of our program, one step at a t
 2. Write a helpful function that takes in a chat message and returns only the useful parts 
 3. Write a function which uses the previous helper function to reduce a full file worth of chat 
 4. Write a function which goes through that simplified chat log and outputs the player’s votes for the round
-5. Write a function which goes through that simplified chat log to check if the paths people claim to have taken are actually valid, based on the map information
+5. Write a function which goes through that simplified chat log to check if the paths people claim to have taken are actually valid, based on the map information 
