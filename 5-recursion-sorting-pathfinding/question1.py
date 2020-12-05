@@ -18,6 +18,8 @@ def main():
 def cachedfibonacci(n, cache={}):
     # Base Cases
     if n == 1 or n == 2:
+        cache[1] = 1
+        cache[2] = 1
         return 1
     elif n == 0:
         return 0
