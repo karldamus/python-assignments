@@ -11,4 +11,4 @@ maze = mh.sample_maze()
 for i in maze:
     print(i)
 
-# question1.main()
+print(mh.print_maze(maze))
