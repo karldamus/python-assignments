@@ -23,28 +23,22 @@ import random
 
 PLAYER = (10,10)
 ENEMIES = [(10,20), (55,10), (23,-5), (0,200)]
-ENEMY = (23,-5)
-testList = []
-
-for i in range(20):
-    testList.append(random.randint(0,30))
 
 def main():
-    # print(cocktailSort(testList))
-    distanceList = distanceCalc(PLAYER, ENEMY)
+    distanceList = distanceCalc(PLAYER, ENEMIES)
     print(cocktailSort(distanceList))
 
 def distanceCalc(hero_position, enemy_positions):
     unsortedDistances = []
 
-    playerX = PLAYER[0]
-    playerY = PLAYER[1]
+    playerX = hero_position[0]
+    playerY = hero_position[1]
 
     # iterate through list of enemies
-    for i in range(len(ENEMIES)):
+    for i in range(len(enemy_positions)):
         # set X and Y coordinates for current enemy
-        enemyX = ENEMIES[i][0]
-        enemyY = ENEMIES[i][1]
+        enemyX = enemy_positions[i][0]
+        enemyY = enemy_positions[i][1]
         
         # calculate distance between player and current enemy
         distance = math.sqrt((( enemyX - playerX ) ** 2 ) + (( enemyY - playerY ) ** 2 ))
@@ -68,6 +62,7 @@ def cocktailSort(unsortedList):
         # first run will start at index 0 and end at the last index
         for i in range(start, end):
             if unsortedList[i] > unsortedList[i + 1]:
+                # swap values
                 tempItem = unsortedList[i]
                 unsortedList[i] = unsortedList[i + 1]
                 unsortedList[i + 1] = tempItem
@@ -81,6 +76,7 @@ def cocktailSort(unsortedList):
 
         for i in range(end - 1, start - 1, -1):
             if unsortedList[i] > unsortedList[i + 1]:
+                # swap values
                 tempItem = unsortedList[i]
                 unsortedList[i] = unsortedList[i + 1]
                 unsortedList[i + 1] = tempItem
