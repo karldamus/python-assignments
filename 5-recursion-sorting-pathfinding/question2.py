@@ -19,7 +19,6 @@ As parameters, the function accepts:
 '''
 
 import math
-import random
 
 PLAYER = (10,10)
 ENEMIES = [(10,20), (55,10), (23,-5), (0,200)]
