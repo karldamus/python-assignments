@@ -9,7 +9,7 @@ def main():
     print(cachedfibonacci(10, cache={})) # expected output: 55
     print(cachedfibonacci(100, cache={})) # expected output: 354,224,848,179,261,915,075
 
-    ''' just for fun: comment this out to see what the 100'000th digit of the fibonacci sequence is '''
+    ''' just for fun: comment the following out to see what the 100'000th digit of the fibonacci sequence is '''
     # x = 100000
     # for i in range(x):
     #     cachedfibonacci(i, cache={})

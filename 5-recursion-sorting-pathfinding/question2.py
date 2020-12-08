@@ -20,6 +20,7 @@ As parameters, the function accepts:
 
 import math
 
+# variables used for demonstration as there was no example data given except in the assignment specification pdf
 PLAYER = (10,10)
 ENEMIES = [(10,20), (55,10), (23,-5), (0,200)]
 
@@ -30,6 +31,7 @@ def main():
 def distanceCalc(hero_position, enemy_positions):
     unsortedDistances = []
 
+    # player position is constant, no need to set it each time in a for loop. << for loop is for list of enemies and is located below
     playerX = hero_position[0]
     playerY = hero_position[1]
 
@@ -82,9 +84,10 @@ def cocktailSort(unsortedList):
                 swapped = True
         start = start + 1
     
+    # name changed for clarification. once this point of the algorithm has been reached, the list is definitely sorted
     sortedList = unsortedList
 
-    return(unsortedList)
+    return(sortedList)
 
 if __name__ == '__main__':
     main()
