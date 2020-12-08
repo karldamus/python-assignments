@@ -26,8 +26,9 @@ space = " "
 def main():
     current_point = start_point()
     connected_points = mh.get_adjacent_positions(maze, current_point)
-    dfs(connected_points, current_point, explored=[])
-    # print("The current point is: " + str(current_point) + ". The connected points are: " + str(connected_points))
+    print(dfs(connected_points, current_point, explored=[]))
+    # print(route)
+    # draw_path(route)
 
 def return_error(message):
     print(message)
@@ -48,27 +49,43 @@ def start_point():
     
 # print(maze)
 def dfs(connected_points, current_point, explored=[]):
-    endingFound = False
     explored.append(current_point)
     # print("The current explored points are: " + str(explored))
-    for new_current_point in connected_points:
-        for i in new_current_point:
-            isend = mh.symbol_at(maze, current_point)
-        if isend == "X":
-            print("Ending Found!")
-            endingFound = True
-            print("The current point is: " + str(current_point))
-            print("The explored pathways are: " + str(explored))
-            break
+    if endingFound == False:
+        for new_current_point in connected_points:
 
-        if new_current_point not in explored and endingFound == False:
-            explored.append(new_current_point)
-            new_connected_points = mh.get_adjacent_positions(maze, new_current_point)
-            dfs(new_connected_points, new_current_point, explored)
+            for i in new_current_point:
+                isend = mh.symbol_at(maze, current_point)
+            if isend == "X":
+                print("Ending Found!")
+                endingFound = True
+                # explorationOutput = explored
+                # return "test"
+
+            if new_current_point not in explored:
+                explored.append(new_current_point)
+                new_connected_points = mh.get_adjacent_positions(maze, new_current_point)
+                dfs(new_connected_points, new_current_point, explored)
+    else:
+        explorationOutput = explored
+        return "test"
+    # try:
+    #     print(explorationOutput)
+    #     return explorationOutput
+    # except:
+    #     pass
     # if endingFound == False:
     #     print("No ending was found. Maybe it's an impossible maze OoO")
         
     # print(explored)
+
+def draw_path(finalized_exploration):
+    # for v in range(len(finalized_exploration)):
+    #     print("test")
+    #     print(point)
+    #     print(point_to_draw)
+    pass
+
 
 if __name__ == '__main__':
     main()

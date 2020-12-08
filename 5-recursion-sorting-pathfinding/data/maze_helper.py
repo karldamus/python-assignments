@@ -13,7 +13,7 @@ def sample_maze():
     maze.append(["#"," ", "#", " ", "#", " ", "#", " ", "#"])
     maze.append(["#"," ", "#", " ", "#", " ", "#", "#", "#"])
     maze.append(["#"," ", " ", " ", " ", " ", " ", " ", "#"])
-    maze.append(["#","#", "#", "#", "#", "#", "#", " ", "#"])
+    maze.append(["#","#", "#", "#", "#", "#", "#", "X", "#"])
     return maze
 
 def get_adjacent_positions(maze, position):

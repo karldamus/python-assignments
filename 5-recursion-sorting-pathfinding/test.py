@@ -1,3 +1,11 @@
+def main():
+    newList = testListReturn()
+    print(newList)
+
+def testListReturn():
+    testList = [(1,8),(2,3)]
+    return testList
+
 def cocktailSort(unsortedList): 
     sortedList = []
     length = len(unsortedList) 
@@ -29,6 +37,9 @@ def cocktailSort(unsortedList):
 
     return sortedList
 
-unsortedList = [5,1,4,2,8,0] 
-print(cocktailSort(unsortedList))
+def calculate():
+    unsortedList = [5,1,4,2,8,0] 
+    print(cocktailSort(unsortedList))
 
+if __name__ == '__main__':
+    main()
