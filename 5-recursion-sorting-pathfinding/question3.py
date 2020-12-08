@@ -13,6 +13,12 @@ with a valid path from the start to end. It does not need to be the shortest pat
 ​Be careful​ to review the functions that have already been written for you so you do not do unnecessary work.
 '''
 
+'''
+add 'final route' calculation by implementing the current_point and doing a check once more
+use an array throughout to keep track of currentexploration?
+it looks like explored is getting reset before the data is output
+'''
+
 from data import maze_helper as mh
 
 maze = mh.sample_maze()
@@ -27,6 +33,9 @@ def main():
     current_point = start_point()
     connected_points = mh.get_adjacent_positions(maze, current_point)
     print(dfs(connected_points, current_point, explored=[]))
+    mh.print_maze(maze)
+    # for i in maze:
+    #     print(i)
     # print(route)
     # draw_path(route)
 
@@ -49,26 +58,43 @@ def start_point():
     
 # print(maze)
 def dfs(connected_points, current_point, explored=[]):
+
     explored.append(current_point)
-    # print("The current explored points are: " + str(explored))
-    if endingFound == False:
-        for new_current_point in connected_points:
 
-            for i in new_current_point:
-                isend = mh.symbol_at(maze, current_point)
+    for test_point in connected_points:
+        # print(test_point)
+        for stringValue in test_point:
+            isend = mh.symbol_at(maze, current_point)
             if isend == "X":
-                print("Ending Found!")
+                print("End of Maze Found!")
                 endingFound = True
-                # explorationOutput = explored
-                # return "test"
+                draw_route(explored)
+                break
+        endingFound = False
+        if test_point not in explored and endingFound != True:
+            new_point = test_point # rename for clarity
+            # explored.append(new_point)
+            new_connected_points = mh.get_adjacent_positions(maze, new_point)
+            print(new_connected_points)
+            dfs(new_connected_points, new_point, explored)
+    
+    # try:
+    #     if endingFound == True:
+    #         for route_point in explored:
+    #             x = route_point[1]
+    #             y = route_point[0]
+    #             maze[y][x] = "."
+    # except:
+    #     pass
 
-            if new_current_point not in explored:
-                explored.append(new_current_point)
-                new_connected_points = mh.get_adjacent_positions(maze, new_current_point)
-                dfs(new_connected_points, new_current_point, explored)
-    else:
-        explorationOutput = explored
-        return "test"
+def draw_route(explored):
+    print(explored)
+    for route_point in explored:
+        x = route_point[1]
+        y = route_point[0]
+        maze[y][x] = "."
+
+    
     # try:
     #     print(explorationOutput)
     #     return explorationOutput
