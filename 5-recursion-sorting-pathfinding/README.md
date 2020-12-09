@@ -5,6 +5,7 @@
 * Understand a new algorithm’s pseudocode and tweak it for a new purpose
 - - - -
 # # Output of question3.py
+```
 #   #   #   #   #   O   #   #   #   
 #           #   .   .           #   
 #       #   #   .   #   #       #   
@@ -14,3 +15,4 @@
 #       #   .   #       #   #   #   
 #           .   .   .   .   .   #   
 #   #   #   #   #   #   #   .   #
+```
