@@ -42,12 +42,13 @@ def start_point():
         for i in range(len(lists)):
             # if "O" is the value, it is the start position!
             if lists[i] == "O":
-                return_point = (current_list, i)
+                return_point = (i, current_list)
                 return return_point
         # fall back if no point found
-        return_error("ERROR 1: Start point not found")
-        current_list += 1
+    return_error("ERROR 1: Start point not found")
+    current_list += 1
 
+# this is a 'depth first search' function
 def dfs(connected_points, current_point, explored=[]):
 
     explored.append(current_point)
@@ -58,19 +59,51 @@ def dfs(connected_points, current_point, explored=[]):
             if isend == "X":
                 print("End of Maze Found!")
                 endingFound = True
-                draw_route(explored)
+                remove_wrong_paths(explored)
                 break
         endingFound = False
+        
         if test_point not in explored and endingFound != True:
-            new_point = test_point # rename for clarity
+            new_point = test_point # renamed for clarity
             new_connected_points = mh.get_adjacent_positions(maze, new_point)
             dfs(new_connected_points, new_point, explored)
 
+def remove_wrong_paths(explored):
+    # we found the ending! now lets clean up the paths that we took using recursion
+    for i in range(0, len(explored)):
+        try:
+            test_point_1 = explored[i]
+            test_point_2 = explored[i + 1]
+        except:
+           break
+        
+        # here we are getting the list of adjacent positions 
+        # of two points that are next to eachother in the 'explored list'
+        test_adjacent_1 = mh.get_adjacent_positions(maze,test_point_1)
+        test_adjacent_2 = mh.get_adjacent_positions(maze,test_point_2)
+
+        # these positions may NOT be adjacent on the actual map
+        # we test that here
+        for v in test_adjacent_2:
+            if v == test_point_1:
+                remove = False
+                break
+            else:
+                remove = True
+        if remove == True:
+            del explored[i]
+            # RECURSION
+            remove_wrong_paths(explored)
+    
+    draw_route(explored)
+
 def draw_route(explored):
-    for route_point in explored:
-        x = route_point[1]
-        y = route_point[0]
-        maze[y][x] = "."
+    finalMaze = maze
+    for route_point in range(len(explored)):
+        x = explored[route_point][0]
+        y = explored[route_point][1]
+        if route_point != 0:
+            maze[y][x] = "."
 
 if __name__ == '__main__':
     main()

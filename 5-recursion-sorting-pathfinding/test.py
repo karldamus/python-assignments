@@ -1,45 +1,30 @@
+from data import maze_helper as mh
+
+maze = mh.sample_maze()
+# mh.print_maze(maze)
+for i in range(len(maze)):
+    print(str(i) + ": " + str(maze[i]))
+
 def main():
-    newList = testListReturn()
-    print(newList)
+    # current_point = start_point()
+    current_point = (3,7)
+    print(current_point)
+    adjacent_points = mh.get_adjacent_positions(maze, current_point)
+    print(adjacent_points)
 
-def testListReturn():
-    testList = [(1,8),(2,3)]
-    return testList
-
-def cocktailSort(unsortedList): 
-    sortedList = []
-    length = len(unsortedList) 
-    swapped = True
-    start = 0
-    end = length-1
-    
-    while swapped == True: 
-        swapped = False
-
-        for i in range(start, end): 
-            if unsortedList[i] > unsortedList[i+1] : 
-                unsortedList[i], unsortedList[i+1]= unsortedList[i+1], unsortedList[i] 
-                swapped=True
-
-        if swapped==False: 
-            break
-
-        swapped = False
-        end = end-1
-
-        for i in range(end-1, start-1,-1): 
-            if unsortedList[i] > unsortedList[i+1]: 
-                unsortedList[i], unsortedList[i+1] = unsortedList[i+1], unsortedList[i] 
-                swapped = True
-        start = start+1
-    
-    sortedList = unsortedList
-
-    return sortedList
-
-def calculate():
-    unsortedList = [5,1,4,2,8,0] 
-    print(cocktailSort(unsortedList))
+def start_point():
+    # reset current list to search in
+    current_list = 0
+    # go through each list inside the maze list
+    for lists in maze:
+        for i in range(len(lists)):
+            # if "O" is the value, it is the start position!
+            if lists[i] == "O":
+                return_point = (current_list, i)
+                return return_point
+        # fall back if no point found
+        return_error("ERROR 1: Start point not found")
+        current_list += 1
 
 if __name__ == '__main__':
     main()
