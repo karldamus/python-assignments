@@ -13,14 +13,6 @@ with a valid path from the start to end. It does not need to be the shortest pat
 ​Be careful​ to review the functions that have already been written for you so you do not do unnecessary work.
 '''
 
-'''
-add 'final route' calculation by implementing the current_point and doing a check once more
-use an array throughout to keep track of currentexploration?
-it looks like explored is getting reset before the data is output
-
-line is going through #? Why is this
-'''
-
 from data import maze_helper as mh
 
 maze = mh.sample_maze()
