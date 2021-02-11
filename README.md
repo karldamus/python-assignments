@@ -1,2 +1,2 @@
 # python-assignments
-A repository for assignments undertaken in first year computer science.
+Python assignments from Computer Science I
