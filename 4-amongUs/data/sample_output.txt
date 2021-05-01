@@ -1,9 +1,5 @@
 # Introduction
 
-The content here is for your reference only. If you believe there is an error in this,
-please let me know immediately on the forums so that I can adjust it and send out
-an announcement with the corrections.
-
 # Problem 1
 
 The skeld.txt dictionary should be:
